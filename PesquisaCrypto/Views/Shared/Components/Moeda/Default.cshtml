@@ -1,0 +1,22 @@
+﻿@model IList<PesquisaCrypto.Models.Moeda>
+
+@{
+    ViewData["Title"] = "Default";
+}
+
+<h4>Em qual moeda você investe?</h4>
+<hr />
+<form asp-controller="Moeda" asp-action="EscolhaDeMoeda" method="post" class="form-group">
+    @{
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <input asp-for="@Model[i].CheckBoxMarcado" type="checkbox" />
+            <label asp-for="@Model[i].MoedaId">@Model[i].Nome</label>
+            <input asp-for="@Model[i].MoedaId" type="hidden" />
+            <input asp-for="@Model[i].Nome" type="hidden" />
+
+            <br />
+        }
+        <input type="submit" value="Enviar" class="btn btn-default" />
+    }
+</form> 
